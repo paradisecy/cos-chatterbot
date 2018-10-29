@@ -61,6 +61,6 @@ class Bot:
             data = json.load(js)
             for item in data["items"]:
                 if item["question"] in response:
-                    with open(item["html"]) as fs:
+                    with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), item["html"])) as fs:
                         return response + fs.read()
             return response
