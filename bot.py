@@ -39,7 +39,7 @@ class Bot:
                            read_only=self.is_read_only)
         if train:
             self.bot.set_trainer(ChatterBotCorpusTrainer)
-            self.bot.train(os.path.join(os.getcwd(), "data/cos/"))
+            self.bot.train(os.path.join(os.path.dirname(os.path.realpath(__file__)), "data/cos/"))
 
     def get_response(self, input_text):
         if not self.is_training:
