@@ -2,10 +2,24 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
-<img src="../static/img/cos.png" class="center"/>
+  <div>
+      <span>
+          <h2>Training</h2>
+          <label class="switch">
+              <input id="chktrain" type="checkbox">
+              <span class="slider round"></span>
+          </label>
+      </span>
+  </div>
+    <button id="retrainBtn" type="button" class="btn btn-primary">Retrain from Corpus</button>
+    <img src="../static/img/cos.png" class="center"/>
+    <h2 class="center-txt">COS524 Project</h2>
+
     <div>
       <div id="chatbox">
         <p class="botText"><span>Hi! I'm COSBot.</span></p>
@@ -14,28 +28,53 @@
         <input id="textInput" type="text" name="msg" placeholder="Message">
         <input id="buttonInput" type="submit" value="Send">
       </div>
-      <script>
-        function getBotResponse() {
-          var rawText = $("#textInput").val();
-          var userHtml = '<p class="userText"><span>' + rawText + '</span></p>';
-          $("#textInput").val("");
-          $("#chatbox").append(userHtml);
-          document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
-          $.get("/get", { msg: rawText }).done(function(data) {
-            var botHtml = '<p class="botText"><span>' + data + '</span></p>';
-            $("#chatbox").append(botHtml);
-            document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
-          });
-        }
-        $("#textInput").keypress(function(e) {
-            if(e.which == 13) {
+        <script>
+            //checbox
+            $("#chktrain").prop('checked', false);
+            $("#chktrain").click( function() {
+                if ($(this).is(':checked'))
+                    $.get("train", { msg: "1" });
+                else
+                    $.get("train", { msg: "0" });
+            });
+            //retrain button
+            $("#retrainBtn").click( function() {
+                $.get("/retrain", { msg: "train" }).done(function(data) {
+                    alert("Model Trained");
+                });
+            });
+            $("#textInput").keypress(function(e) {
+                if(e.which == 13) {
+                    getBotResponse();
+                }
+            });
+            $("#buttonInput").click(function () {
                 getBotResponse();
+            });
+
+            function getBotResponse() {
+                var rawText = $("#textInput").val();
+                if (rawText === "")
+                    return;
+                var userHtml = '<p class="userText"><span>'+ rawText + '</span></p>';
+                $("#textInput").val("");
+                $("#chatbox").append(userHtml);
+                document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+                $.get("/get", { msg: rawText }).done(function(data) {
+                    if(data !== '<Empty>')
+                        $("#chatbox").append(checkForHtmlResponse(data));
+                    document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'});
+                });
             }
-        });
-        $("#buttonInput").click(function() {
-          getBotResponse();
-        })
-      </script>
+
+            function checkForHtmlResponse(data) {
+                var start = '<p class="botText"><span>';
+                var end = '</span></p>';
+                return `${start}${data}${end}`;;
+            }
+        </script>
     </div>
+
+
   </body>
 </html>

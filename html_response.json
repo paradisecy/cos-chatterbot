@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "question": "Here is a typical selection of courses for full time study, with emphasis on Cognitive Psychology",
+      "html": "cp.html"
+    },
+    {
+      "question": "Here is a typical selection of courses for full time study, with emphasis on Computer Science",
+      "html": "cs.html"
+    }
+  ]
+}

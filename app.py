@@ -1,14 +1,9 @@
 from flask import Flask, render_template, request
-from chatterbot import ChatBot
-from chatterbot.trainers import ChatterBotCorpusTrainer
+from bot import Bot
 
 app = Flask(__name__)
 
-english_bot = ChatBot("Chatterbot", storage_adapter="chatterbot.storage.SQLStorageAdapter")
-
-english_bot.set_trainer(ChatterBotCorpusTrainer)
-english_bot.train("chatterbot.corpus.english")
-
+cosbot = Bot(train=True)
 
 @app.route("/")
 def home():
@@ -17,8 +12,19 @@ def home():
 @app.route("/get")
 def get_bot_response():
     userText = request.args.get('msg')
-    return str(english_bot.get_response(userText))
+    return cosbot.get_response(userText)
+
+@app.route("/retrain")
+def retrain():
+    cosbot.retrain()
+    return "done"
+
+@app.route("/train")
+def train():
+    is_training = int(request.args.get('msg'))
+    cosbot.is_training = bool(is_training)
+    return "done"
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
