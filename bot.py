@@ -38,7 +38,7 @@ class Bot:
                            read_only=self.is_read_only)
         if train:
             self.bot.set_trainer(ChatterBotCorpusTrainer)
-            self.bot.train("./data/cos/")
+            self.bot.train("data/cos/")
 
     def get_response(self, input_text):
         if not self.is_training:
