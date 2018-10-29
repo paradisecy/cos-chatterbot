@@ -57,7 +57,7 @@ class Bot:
 
     @staticmethod
     def check_for_html_response(response):
-        with open("html_response.json") as js:
+        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "html_response.json")) as js:
             data = json.load(js)
             for item in data["items"]:
                 if item["question"] in response:
