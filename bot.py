@@ -35,7 +35,7 @@ class Bot:
         self.bot = ChatBot("cosbot",
                            storage_adapter="chatterbot.storage.SQLStorageAdapter",
                            logic_adapters=self.logic_adapters,
-                           filters=["chatterbot.filters.RepetitiveResponseFilter"],
+                           # filters=["chatterbot.filters.RepetitiveResponseFilter"],
                            read_only=self.is_read_only)
         if train:
             self.bot.set_trainer(ChatterBotCorpusTrainer)
