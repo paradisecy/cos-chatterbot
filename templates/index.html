@@ -15,8 +15,16 @@
               <span class="slider round"></span>
           </label>
       </span>
+      <span>
+          <h2>ReadOnly</h2>
+          <label class="switch">
+              <input id="chkreadonly" type="checkbox">
+              <span class="slider round"></span>
+          </label>
+      </span>
   </div>
-    <button id="retrainBtn" type="button" class="btn btn-primary">Retrain from Corpus</button>
+      <br/>
+    <button id="retrainBtn" type="button" class="btn btn-primary">Drop DB and retrain from Corpus</button>
     <img src="../static/img/cos.png" class="center"/>
     <h2 class="center-txt">COS524 Project</h2>
 
@@ -30,16 +38,37 @@
       </div>
         <script>
             //checbox
-            $("#chktrain").prop('checked', false);
-            $("#chktrain").click( function() {
+            getState();
+
+            function getState() {
+                $.get("/state").done(function(data) {
+                    var res = data.split('@');
+                    var isTraining = res[0];
+                    var isReadOnly = res[1];
+                    $("#chktrain").prop('checked', isTraining === "True" ? true : false);
+                    $("#chkreadonly").prop('checked', isReadOnly === "True" ? true : false);
+                });
+            }
+
+          
+            $("#chktrain").click(function () {
                 if ($(this).is(':checked'))
                     $.get("train", { msg: "1" });
                 else
                     $.get("train", { msg: "0" });
             });
+
+            $("#chkreadonly").click(function () {
+                if ($(this).is(':checked'))
+                    $.get("readonly", { msg: "1" });
+                else
+                    $.get("readonly", { msg: "0" });
+            });
+
             //retrain button
             $("#retrainBtn").click( function() {
-                $.get("/retrain", { msg: "train" }).done(function(data) {
+                $.get("/retrain", { msg: "train" }).done(function (data) {
+                    getState();
                     alert("Model Trained");
                 });
             });
@@ -74,7 +103,5 @@
             }
         </script>
     </div>
-
-
   </body>
 </html>
