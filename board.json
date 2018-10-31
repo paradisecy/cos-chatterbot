@@ -1,0 +1,34 @@
+{
+  "board": [
+    {
+      "name": "Diakidoy Irianna",
+      "title": "Academic Board Member",
+      "email": "irianna.diakidoy@ouc.ac.cy",
+      "phone": "",
+      "gender": "woman",
+      "tags": [
+        "board"
+      ]
+    },
+    {
+      "name": "Kakas Antonis",
+      "title": "Academic Board Member",
+      "email": "antonis.kakas@ouc.ac.cy",
+      "phone": "",
+      "gender": "man",
+      "tags": [
+        "board"
+      ]
+    },
+    {
+      "name": "Michael Loizos",
+      "title": "Associate Professor",
+      "email": "loizos.michael@ouc.ac.cy",
+      "phone": "0035722411963",
+      "gender": "man",
+      "tags": [
+        "associate"
+      ]
+    }
+  ]
+}
