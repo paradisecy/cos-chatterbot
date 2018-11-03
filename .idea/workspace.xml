@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f6c84ce-43c3-4589-b9cc-0648941ee5ad" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,8 +55,8 @@
       <file leaf-file-name="bot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="47" column="21" lean-forward="true" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+            <state relative-caret-position="240">
+              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -293,7 +292,7 @@
       <window_info anchor="bottom" id="Find" order="1" weight="0.32972974" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29837838" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3589189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32972974" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -679,8 +678,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="47" column="21" lean-forward="true" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+        <state relative-caret-position="240">
+          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>

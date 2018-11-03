@@ -50,8 +50,8 @@ class Bot:
         self.bot = ChatBot("cosbot",
                            storage_adapter={
                                'import_path': 'chatterbot.storage.SQLStorageAdapter',
-                               'database_uri': 'sqlite:///db.sqlite3'},
-                           logic_adapters=self.logic_adapters)
+                               'database_uri': 'sqlite:///db.sqlite3'})
+                           #logic_adapters=self.logic_adapters)
         if train:
             self.bot.set_trainer(ChatterBotCorpusTrainer)
             self.bot.train(os.path.join(self.current_path, "data/cos/"))
