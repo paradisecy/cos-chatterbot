@@ -1,0 +1,43 @@
+categories:
+- modules
+conversations:
+- - COS511
+  - ^COS511
+- - COS512
+  - ^COS512
+- - COS513
+  - ^COS513
+- - COS514 
+  - ^COS514 
+- - COS521
+  - ^COS521
+- - COS522
+  - ^COS522
+- - COS523
+  - ^COS523
+- - COS524
+  - ^COS524
+- - COS525
+  - ^COS525
+- - COS611
+  - ^COS611
+- - COS612
+  - ^COS612
+- - COS613
+  - ^COS613
+- - COS614
+  - ^COS614
+- - COS621
+  - ^COS621
+- - COS622
+  - ^COS622
+- - COS623
+  - ^COS623
+- - COS624
+  - ^COS624
+- - COS625
+  - ^COS625
+- - COS701A
+  - ^COS701A
+- - COS701B
+  - ^COS701B
