@@ -91,7 +91,7 @@ class Bot:
             else:
                 self.input_statement = self.bot.input.process_input_statement(input_text)
                 response = str(self.bot.get_response(input_text))
-                return self.check_for_href(self.check_for_html_response(self.check_board(response)))
+                return self.check_for_href(self.check_for_html_response(response))
 
     def check_for_html_response(self, response):
         """
@@ -149,10 +149,10 @@ class Bot:
                 data = json.load(js)
                 text = ''
                 for item in data["board"]:
-                    if split[1] == item[split[0]]:
+                    if split[1] in item[split[0]]:
                         pronoun = 'His' if item['gender'] == 'man' else 'Her'
                         phone = ' and phone ' + item['phone'] if item['phone'] else ''
-                        text += Template('$name has title of $title. $pronoun email is $email$phone .') \
+                        text += Template('$name has title of $title. $pronoun emails is $email$phone .') \
                             .substitute(name=item['name'],
                                         title=item['title'],
                                         pronoun=pronoun,

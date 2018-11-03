@@ -6,7 +6,9 @@
       "email": "irianna.diakidoy@ouc.ac.cy",
       "phone": "",
       "gender": "woman",
-      "tag": "board"
+      "tags": [
+        "board"
+      ]
     },
     {
       "name": "Kakas Antonis",
@@ -14,7 +16,9 @@
       "email": "antonis.kakas@ouc.ac.cy",
       "phone": "",
       "gender": "man",
-      "tag": "board"
+      "tags": [
+        "board"
+      ]
     },
     {
       "name": "Michael Loizos",
@@ -22,7 +26,9 @@
       "email": "loizos.michael@ouc.ac.cy",
       "phone": "0035722411963",
       "gender": "man",
-      "tag": "associate"
+      "tags": [
+        "associate"
+      ]
     }
   ]
 }
