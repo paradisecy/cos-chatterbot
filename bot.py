@@ -8,7 +8,6 @@ from chatterbot.response_selection import get_random_response
 
 
 class Bot:
-    dbName = "db.sqlite3"
     bot = None
     is_training = False
     teach_placeholder = '>>'
@@ -57,10 +56,6 @@ class Bot:
             self.bot.set_trainer(ChatterBotCorpusTrainer)
             self.bot.train(os.path.join(self.current_path, "data/cos/"))
 
-    '''
-
-    '''
-
     def get_response(self, input_text):
         """
         Takes an input text and gets back a response.
@@ -82,7 +77,7 @@ class Bot:
         """
         if not self.is_training:
             response = str(self.bot.get_response(input_text))
-            return self.check_for_href(self.check_for_html_response(self.check_board(response)))
+            return self.check_for_href(self.check_for_html_response(self.check_board(self.check_for_module(response))))
         else:
             if input_text.startswith(self.teach_placeholder):
                 curr_in_stmt = self.bot.input.process_input_statement(input_text.replace(self.teach_placeholder, ''))
@@ -91,7 +86,7 @@ class Bot:
             else:
                 self.input_statement = self.bot.input.process_input_statement(input_text)
                 response = str(self.bot.get_response(input_text))
-                return self.check_for_href(self.check_for_html_response(self.check_board(response)))
+                return self.check_for_href(self.check_for_html_response(self.check_board(self.check_for_module(response))))
 
     def check_for_html_response(self, response):
         """
@@ -127,7 +122,10 @@ class Bot:
                             template = Template('<a href="mailto:$mail">$mail</a>')
                             words[idx] = template.substitute(mail=w)
                         elif e == extensions[1]:
-                            template = Template('<a href="$url">$url</a>')
+                            if 'modules?' in w:
+                                template = Template('<a href="$url">here</a>')
+                            else:
+                                template = Template('<a href="$url">$url</a>')
                             words[idx] = template.substitute(url=w)
             sep = ' '
             return sep.join(words)
@@ -136,7 +134,7 @@ class Bot:
 
     def check_board(self, response):
         """
-        Check if the response contains the hash placeholder
+        Check if the response contains the $ placeholder
         and constructs the text based on the values of board.json
 
         :param response:
@@ -159,6 +157,29 @@ class Bot:
                                         email=item['email'],
                                         phone=phone)
                 return text
+        else:
+            return response
+
+    def check_for_module(self, response):
+        """
+        Check if the response contains a ^ placeholder
+        plus the module code and construct the response text
+        based on the values of modules.html
+
+        :param response:
+        """
+        placeholder = '^'
+        if response.startswith(placeholder):
+            split = list(filter(None, response.split(placeholder)))
+            with open(os.path.join(self.current_path, "modules.json")) as js:
+                for item in json.load(js):
+                    if split[0] == item['code']:
+                        return Template('Course $code has title $title and weight of $ects ECTS. More details can be '
+                                         'found $link') \
+                            .substitute(code=item['code'],
+                                        title=item['title'],
+                                        ects=item['ects'],
+                                        link=item['link'])
         else:
             return response
 
