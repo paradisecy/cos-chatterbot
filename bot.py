@@ -4,6 +4,8 @@ import logging
 import json
 import os
 from string import Template
+from chatterbot.response_selection import get_random_response
+
 
 class Bot:
     bot = None
@@ -47,8 +49,11 @@ class Bot:
         :param train:
         """
         self.bot = ChatBot("cosbot",
-                           storage_adapter="chatterbot.storage.SQLStorageAdapter",
-                           logic_adapters=self.logic_adapters)
+                           storage_adapter={
+                               'import_path': 'chatterbot.storage.SQLStorageAdapter',
+                               'database_uri': 'sqlite:///db.sqlite3'},
+                           logic_adapters=self.logic_adapters,
+                           response_selection_method=get_random_response)
         if train:
             self.bot.set_trainer(ChatterBotCorpusTrainer)
             self.bot.train(os.path.join(self.current_path, "data/cos/"))
