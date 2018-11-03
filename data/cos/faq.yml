@@ -37,8 +37,8 @@ conversations:
 - - How to contact
   - For additional information, please contact Ms. Marianna Prodromou at prodromou@ouc.ac.cy
 - - Academic Board Member
-  - $tags$board
+  - $tag$board
 - - Associate Professor
-  - $tags$associate
+  - $tag$associate
 - - Academic coordinator
-  - $tags$associate
+  - $tag$associate
