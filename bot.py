@@ -4,11 +4,8 @@ import logging
 import json
 import os
 from string import Template
-from chatterbot.response_selection import get_random_response
-
 
 class Bot:
-    dbName = "db.sqlite3"
     bot = None
     is_training = False
     teach_placeholder = '>>'
@@ -51,15 +48,10 @@ class Bot:
         """
         self.bot = ChatBot("cosbot",
                            storage_adapter="chatterbot.storage.SQLStorageAdapter",
-                           logic_adapters=self.logic_adapters,
-                           response_selection_method=get_random_response)
+                           logic_adapters=self.logic_adapters)
         if train:
             self.bot.set_trainer(ChatterBotCorpusTrainer)
             self.bot.train(os.path.join(self.current_path, "data/cos/"))
-
-    '''
-
-    '''
 
     def get_response(self, input_text):
         """
