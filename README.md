@@ -5,7 +5,7 @@ Name: Andreas Paradisiotis</br>
 Email: andreas.paradisiotis@st.ouc.ac.cy , a.paradisiotis@gmail.com</br>
 ## Instructions to setup the system
 You can find a live demo with some limitations <a href="http://aparadisiotis.pythonanywhere.com/">here</a></br>
-To install the system on your machine from your terinal type the following commands</br>
+To install the system on your machine from your terminal type the following commands</br>
 ```
 mkdir cos-chatterbot
 cd cos-chatterbot
