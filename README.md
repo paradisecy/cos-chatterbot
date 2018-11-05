@@ -4,6 +4,8 @@ A conversational chatbot trained in a way to give answers to questions related t
 Name: Andreas Paradisiotis</br>
 Email: andreas.paradisiotis@st.ouc.ac.cy , a.paradisiotis@gmail.com</br>
 ## Instructions to setup the system
+You can find a live demo with some limitations <a href="http://aparadisiotis.pythonanywhere.com/">here</a></br>
+From your terinal type the following</br>
 ```
 mkdir cos-chatterbot
 cd cos-chatterbot
@@ -11,6 +13,7 @@ git clone https://github.com/paradisecy/cos-chatterbot.git
 pip install -r requirments.txt
 python app.py
 ```
+From your browser navigate to http://localhost:5000/
 ## System dependencies from libraries and other systems
 You need to have Python3.6 or above installed on your machine</br>
 cos-chatterbot has dependencies on: </br>
