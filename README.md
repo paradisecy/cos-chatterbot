@@ -12,3 +12,9 @@ pip install -r requirments.txt
 python app.py
 ```
 ## System dependencies from libraries and other systems
+You need to have Python3.6 or above installed on your machine</br>
+cos-chatterbot has dependencies on: </br>
+<a href="https://github.com/pallets/flask">Flask</a></br>
+<a href="https://github.com/gunthercox/ChatterBot">chatterbot</a></br>
+<a href="https://github.com/zzzeek/sqlalchemy">SQLAlchemy</a></br>
+<a href="https://github.com/scrapy/scrapy">scrapy</a></br>
