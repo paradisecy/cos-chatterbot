@@ -7,7 +7,7 @@ import os
 import json
 app = Flask(__name__)
 current_path = os.path.dirname(os.path.realpath(__file__))
-module_json = os.path.join(current_path, "modules.json")
+module_json = "modules.json"
 module_yml = os.path.join(current_path, "data/cos/modules.yml")
 
 if os.path.exists(module_json):
