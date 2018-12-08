@@ -7,7 +7,7 @@ import os
 import json
 app = Flask(__name__)
 current_path = os.path.dirname(os.path.realpath(__file__))
-module_json = "cos-chatterbot/modules.json"
+module_json = "modules.json"
 module_yml = os.path.join(current_path, "data/cos/modules.yml")
 
 if os.path.exists(module_json):
@@ -16,7 +16,7 @@ if os.path.exists(module_json):
 crawler = CrawlerProcess({
     'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)',
     'FEED_FORMAT': 'json',
-    'FEED_URI': module_json
+    'FEED_URI': "cos-chatterbot/" + module_json
 })
 
 crawler.crawl(OucModulesSpider)
@@ -29,7 +29,7 @@ with open(module_yml, "w") as f:
     f.write('categories:' + '\n')
     f.write('- modules' + '\n')
     f.write('conversations:' + '\n')
-    with open(module_json) as mj:
+    with open(os.path.join(current_path, "module_json")) as mj:
         for item in json.load(mj):
             f.write('- - ' + item['code']+'\n')
             f.write('  - ' + '^' + item['code'] + '\n')
