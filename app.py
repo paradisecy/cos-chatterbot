@@ -29,7 +29,7 @@ with open(module_yml, "w") as f:
     f.write('categories:' + '\n')
     f.write('- modules' + '\n')
     f.write('conversations:' + '\n')
-    with open(os.path.join(current_path, "module_json")) as mj:
+    with open(os.path.join(current_path, module_json)) as mj:
         for item in json.load(mj):
             f.write('- - ' + item['code']+'\n')
             f.write('  - ' + '^' + item['code'] + '\n')
